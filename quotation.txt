@@ -1,4 +1,6 @@
 Vi editor
 
 to insert content - press I
-to save and quit - press esc then ":wq" 
+to save and quit - press esc then ":wq"
+
+modified content added 
