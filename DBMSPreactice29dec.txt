@@ -1,0 +1,308 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.27 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mouri_training;
+Database changed
+mysql> show tables ;
++--------------------------+
+| Tables_in_mouri_training |
++--------------------------+
+| bonus                    |
+| course                   |
+| employees                |
+| student                  |
+| title                    |
+| worker                   |
++--------------------------+
+6 rows in set (0.28 sec)
+
+mysql> CREATE TABLE employees(emp_id int NOT NULL, emp_name varchar(30) NOT NULL, salary int (10),dept_id varchar(20) NOT NULL, primary key(emp_id));
+ERROR 1050 (42S01): Table 'employees' already exists
+mysql> CREATE TABLE emp_info(emp_id int NOT NULL, emp_name varchar(30) NOT NULL, salary int (10),dept_id varchar(20) NOT NULL, primary key(emp_id));
+Query OK, 0 rows affected, 1 warning (1.00 sec)
+
+mysql> desc emp_info;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | NO   | PRI | NULL    |       |
+| emp_name | varchar(30) | NO   |     | NULL    |       |
+| salary   | int         | YES  |     | NULL    |       |
+| dept_id  | varchar(20) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.26 sec)
+
+mysql> alter table empl_info add emp_address varchar(40) NOT NULL after emp_name;
+ERROR 1146 (42S02): Table 'mouri_training.empl_info' doesn't exist
+mysql> alter table emp_info add emp_address varchar(40) NOT NULL after emp_name;
+Query OK, 0 rows affected (0.98 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp_info;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| salary      | int         | YES  |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.04 sec)
+
+mysql> alter table emp_info modify salary double;
+Query OK, 0 rows affected (0.94 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp_info;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| salary      | double      | YES  |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.07 sec)
+
+mysql> alter table emp_info rename column salary to emp_salary ;
+Query OK, 0 rows affected (0.25 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp_info;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| emp_salary  | double      | YES  |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table emp_info add emp_email varchar(20) NOT NULL;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp_info;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| emp_salary  | double      | YES  |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.08 sec)
+
+mysql> alter table  emp_info drop emp_salary;
+Query OK, 0 rows affected (1.30 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp_info;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> alter table emp_info rename to Employee_Data;
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> desc employee_data;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.15 sec)
+
+
+mysql> alter table employee_data add emp_salary double NOT NULL;
+Query OK, 0 rows affected (0.86 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_data;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
+| emp_salary  | double      | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.07 sec)
+
+mysql> alter table employee_data  add column emp_mob varchar(20);
+Query OK, 0 rows affected (0.41 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_data;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
+| emp_salary  | double      | NO   |     | NULL    |       |
+| emp_mob     | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.11 sec)
+
+mysql> alter table employee_data add CONSTRAINT constraintmob  unique(emp_mob);
+Query OK, 0 rows affected (0.44 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_data;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
+| emp_salary  | double      | NO   |     | NULL    |       |
+| emp_mob     | varchar(20) | YES  | UNI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.08 sec)
+
+
+mysql> alter table employee_data drop CONSTRAINT constraintmob;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_data;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
+| emp_salary  | double      | NO   |     | NULL    |       |
+| emp_mob     | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> create table instructor(instructorid int,
+    -> instructorname varchar(50) ,
+    ->  constraint cns_name unique(instructorname));
+Query OK, 0 rows affected (0.46 sec)
+
+mysql> desc employee_data;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | int         | NO   | PRI | NULL    |       |
+| emp_name    | varchar(30) | NO   |     | NULL    |       |
+| emp_address | varchar(40) | NO   |     | NULL    |       |
+| dept_id     | varchar(20) | NO   |     | NULL    |       |
+| emp_email   | varchar(20) | NO   |     | NULL    |       |
+| emp_salary  | double      | NO   |     | NULL    |       |
+| emp_mob     | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.08 sec)
+
+mysql> desc instructor;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| instructorid   | int         | YES  |     | NULL    |       |
+| instructorname | varchar(50) | YES  | UNI | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+2 rows in set (0.10 sec)
+
+mysql> create table instructordetails(instr_details_id int,instr_id int,specialization varchar(20))engine=MyISAM;
+Query OK, 0 rows affected (0.26 sec)
+
+mysql> desc instructordetails;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| instr_details_id | int         | YES  |     | NULL    |       |
+| instr_id         | int         | YES  |     | NULL    |       |
+| specialization   | varchar(20) | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+3 rows in set (0.13 sec)
+
+mysql> truncate course;
+Query OK, 0 rows affected (0.96 sec)
+
+mysql> desc course;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| courseid   | int         | YES  |     | NULL    |       |
+| coursename | varchar(20) | NO   |     | NULL    |       |
+| coursefee  | float       | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.09 sec)
+
+mysql> insert into course  values (1,"JAVA_SpringBoot","10000" );
+Query OK, 1 row affected (0.12 sec)
+
+mysql> desc course;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| courseid   | int         | YES  |     | NULL    |       |
+| coursename | varchar(20) | NO   |     | NULL    |       |
+| coursefee  | float       | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.15 sec)
+
+mysql> select * from course;
++----------+-----------------+-----------+
+| courseid | coursename      | coursefee |
++----------+-----------------+-----------+
+|        1 | JAVA_SpringBoot |     10000 |
++----------+-----------------+-----------+
+1 row in set (0.05 sec)
+
+mysql> truncate table course;
+Query OK, 0 rows affected (0.79 sec)
+
+mysql> select * from course;
+Empty set (0.09 sec)
+
+mysql> desc course;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| courseid   | int         | YES  |     | NULL    |       |
+| coursename | varchar(20) | NO   |     | NULL    |       |
+| coursefee  | float       | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql>
