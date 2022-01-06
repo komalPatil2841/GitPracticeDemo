@@ -1,0 +1,43 @@
+package organization;
+
+public class Report extends CEO {
+	
+	String time;
+	 String rDate;
+	 String task;
+	 String project ;
+	public Report( String t,String date,String t1, String pname ) {
+		time=t;
+		rDate=date;
+		task=t1;
+		project=pname ;
+		System.out.println("Project Report ");
+		
+		
+		
+	}
+	private void printReport() {
+		System.out.println("Project"+time);
+		System.out.println("Project "+rDate);
+		System.out.println("Project"+ project);
+		System.out.println("Project "+task);
+	
+	}
+
+	public static void main(String[] args) {
+		Report r = new Report("10.15","12June","ADD Product Info","MouriProject");
+		Employee1 e= new Employee1();
+		e.setEid(101);
+		e.getEid();
+		e.setElogin("EMP_login_Report" );
+		
+		e.getElogin();
+		e.setePassword("password_CEO");
+		e.getePassword();
+	
+		r.printReport();
+		
+
+	}
+
+}
