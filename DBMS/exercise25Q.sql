@@ -38,20 +38,24 @@ select item, max(price), min(price) from items_ordered GROUP BY item;
 
 -- 12. How many orders did each customer make? Use the items_ordered table. select the customerid, number of orders they made, and the sum of their orders. 
 -- Click the Group By answers link below if you have any problems.
+SELECT customerid, count(customerid), sum(price) FROM items_ordered GROUP BY customerid;
 
--- select customerid, 
 
 -- 13. How many people are in each unique state in the customers table that
 -- have more than one person in the state? select the state and display the
 -- number of how many people are in each if it's greater than 1.
+SELECT state, count(state)FROM customers GROUP BY state HAVING count(state) > 1;
 
 -- 14. from  the items_ordered table, select the item, maximum price, and
 -- minimum price for each specific item in the table. Only display the results if the
 -- maximum price for one of the items is greater than 190.00.
+SELECT item, max(price), min(price) FROM items_ordered GROUP BY item HAVING max(price) > 190.00;	
 
 -- 15. How many orders did each customer make? Use the items_ordered table.
 -- select the customerid, number of orders they made, and the sum of their
 -- orders if they purchased more than 1 item.
+SELECT customerid, count(customerid), sum(price) FROM items_ordered GROUP BY customerid HAVING count(customerid) > 1;
+
 
 -- 16. select the lastname, firstname, and city for all customers in the customers table. Display the results in Ascending Order based on the lastname.
 select the lastname, firstname, city from customers ORDER BY lastname;
@@ -68,9 +72,7 @@ SELECT item, price FROM items_ordered WHERE price > 10 ORDER BY price ;
 -- rows as long as they are not either of these two items.
    
    select the customerid, order_date, item from items_ordered  where item not in ('Snow Shoes', 'Ear Muffs');
-    
-    
-    
+       
     
 -- 20. select the item and price of all items that start with the letters 'S', 'P', or 'F'.
 
@@ -81,14 +83,15 @@ SELECT item, price FROM items_ordered WHERE price > 10 ORDER BY price ;
   
 -- 22. select the firstname, city, and state from  the customers table for all of the rows where the state value is either: Arizona, Washington, Oklahoma,
 -- Colorado, or Hawaii.
-select the firstname, city, state from  customers WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii');
+   select the firstname, city, state from  customers WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii');
 
 
 -- 23. select the item and per unit price for each item in the items_ordered table. Hint: Divide the price by the quantity.
+   select item, sum(price)/sum(quantity)from items_ordered group by item;
 
 -- 24. Write a query using a join to determine which items were ordered by each of the customers in the customers table. select the customerid, firstname,
 -- lastname, order_date, item, and price for everything each customer purchased in the items_ordered table.
-select customers.customerid, customers.firstname, customers.lastname, items_ordered.order_date, items_ordered.item, items_ordered.price   FROM customers, items_ordered
+     select customers.customerid, customers.firstname, customers.lastname, items_ordered.order_date, items_ordered.item, items_ordered.price   FROM customers, items_ordered
 WHERE customers.customerid = items_ordered.customerid;
 
 -- 25. Repeat exercise #1, however display the results sorted by state in descending order.
