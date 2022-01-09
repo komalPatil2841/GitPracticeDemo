@@ -1,23 +1,27 @@
-package inheritanceandpolymorphism.inheritance.single;
+package inheritanceandpolymorphism.inheritance.multilevel;
 
-public class Programmer extends Employee {
- String [] technologies= { "Mysql","Java","Spring boot","Python"};
- String projectName;
- void readProgrammerInfo() {
-	 sc.nextLine();
-	 System.out.println("Enter Project Name");
-	 projectName=sc.nextLine();
- }
- void viewProgrammerInfo() {
-	 System.out.println(" Project Details");
-	 System.out.println(" Project Name" +projectName);
-	 System.out.println("Technologies used");
-	 for(int i=0;i<technologies.length;i++) {
-		 System.out.println(technologies[i]); 
-	 }
+
+
+public class Programmer extends Employee{
 	
-	 
+	String[] technologies = { "MySql","Java","Spring","Spring Boot"};
+	String projectName;
 	
- }
+	void readProgrammerInformation() {
+		readEmployeeInformation();
+		System.out.println("Enter the project Name");
+		sc.nextLine();
+		projectName = sc.nextLine();
+		
+	}
+	void viewProgrammerInformation() {
+		System.out.println("Programmer Details are ........");
+		viewEmployeeInformation();
+		System.out.println("Project Name " + projectName);
+		System.out.println("Technologies used ..... ");
+		for (String tech : technologies) {
+			System.out.print(tech + "\t");
+		}
+	}
+
 }
-

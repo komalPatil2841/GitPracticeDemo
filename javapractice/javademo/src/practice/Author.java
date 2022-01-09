@@ -3,73 +3,53 @@ package practice;
 import java.util.Scanner;
 
 public class Author {
-
 	
-	//following are the instance variables of Book(Attributes)
-	String name;
-	String email;
+	String authorName;
+	String bookName;
 	String gender;
-	
-	public String getName() {
-		return name;
-	}
-
-	
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	
-
-	
-	
+	String publishedDate;
+	int no_of_books;
 	Scanner sc = new Scanner(System.in);
 	public void readAuthorDetails() {
 		
 		System.out.println("Enter the Author Details");
-		System.out.println("Enter the Author name");
-		name = sc.next();
-//		System.out.println("Enter the email Name");
-//		email= sc.nextLine();
+		System.out.println("Enter the Author Name");
+		authorName = sc.next();
+		System.out.println("Enter the Gender Author");
+		gender=sc.next();
+		System.out.println("Enter the  Book Name Written By Author");
+		sc.nextLine();
+		bookName = sc.nextLine();
+	
+		System.out.println("Enter the publishedDate of book");
 		
-		System.out.println("Enter gender");
-		gender =sc.next();
-		
+				publishedDate = sc.next();
+
+		System.out.println("Enter the no_Of_books written by Author");
+		no_of_books = sc.nextInt();
 	}
 	
-	public void print() {
+	public void displyAuthorDetails() {
 		
 		System.out.println("The Author Details");
-		System.out.println("name = " +name);
-		 
-		System.out.println("email = "+ email);
 		
-		System.out.println("gender = "+ gender);
+		System.out.println("Author Name = "+authorName);
+
+		System.out.println("Gender of author = "+gender);
+		
+		
+		System.out.println("Book Nmae = "+bookName);
+
+		
+		
+		
+		System.out.println("Published Date = " +publishedDate);
+
+		System.out.println("no_Of_Pages = "+no_of_books);
 		
 	}
-	public static void main(String[]args) {
-		
-		Author A = new Author();
-		A.readAuthorDetails();
-		A.getName();
-		A.setEmail("Komalp@gmail.com");
-		A.getEmail();
-		A.getGender();
-		//A.print();
+}
+
 	
-		
-	}
 
-	 }
-
-   
 
