@@ -1,0 +1,5 @@
+package inheritanceandpolymorphism.inheritance.single;
+
+public class Programmer {
+
+}
