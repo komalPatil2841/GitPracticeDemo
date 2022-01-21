@@ -1,3 +1,4 @@
+
 use mouri_training;
 create table Worker (worker_id varchar(20) primary key, first_name varchar(20),last_name varchar(20),salary int, joining_date datetime, department varchar(20));
 desc Worker;
