@@ -1,0 +1,5 @@
+package com.mouritech.hibernateeg.entity;
+
+public class Student {
+
+}
